@@ -15,7 +15,7 @@
 
 
 	<bean id="itemDao" class="com.reva.dao.ItemDaoImpl"></bean>
-	<bean id="stockDao" class="com.reva.dao.StockDaoImpl" ></bean>
+	<bean id="stockDao" class="com.reva.dao.StockDaoImpl" scope="prototype"></bean>
 	
 	<bean id="priceService" class="com.reva.service.PriceServiceImpl"></bean>
 	

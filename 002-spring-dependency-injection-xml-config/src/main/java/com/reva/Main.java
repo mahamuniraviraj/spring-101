@@ -61,6 +61,9 @@ public class Main {
 		int price = orderService.getOrderPrice();
 		System.out.println(" Order price " + price);
 
+		logger.debug(
+				"See the prototype bean Stock Dao is created at each method invocation on singlton bean Inventory Service.");
+
 		InventoryService invService = context.getBean("inventoryService", InventoryService.class);
 
 		Integer stock = invService.getAllStock(1);
@@ -69,7 +72,7 @@ public class Main {
 
 		stock = invService.getAllStock(1);
 
-		System.out.println("stock  " + stock);
+		System.out.println("stock changed " + stock);
 		context.close();
 
 	}
