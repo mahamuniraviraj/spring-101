@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:lang="http://www.springframework.org/schema/lang"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang-4.3.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.3.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+
+
+
+	<bean id="itemDao" class="com.reva.dao.ItemDaoImpl"></bean>
+	<bean id="stockDao" class="com.reva.dao.StockDaoImpl" ></bean>
+	
+	<bean id="priceService" class="com.reva.service.PriceServiceImpl"></bean>
+	
+	<!-- Constructor Injection Example -->
+	
+	<bean id="orderService" class="com.reva.service.OrderServiceImpl">
+		<constructor-arg ref="priceService"></constructor-arg>
+	</bean>
+	
+	<!-- Property Injection Example -->
+	
+	<bean id="itemService" class="com.reva.service.ItemServiceImpl">
+		<property name="itemDao" ref="itemDao"></property>
+	</bean>
+	
+	 <!-- Method Injection Example -->
+	 
+	 <bean id="inventoryService" class="com.reva.service.InventoryServiceImpl">
+	 	<lookup-method name="getStockDao" bean="stockDao"/>
+	 </bean>
+	
+</beans>
