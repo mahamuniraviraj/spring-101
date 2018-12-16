@@ -117,6 +117,8 @@ exploration
 *.ipr
 *.iws
 .idea
+.springBeans
 
 
 
+/.recommenders/
